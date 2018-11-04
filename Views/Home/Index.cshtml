@@ -1,0 +1,75 @@
+﻿@using mvcintermediate.Models
+@model  List<Urun>
+@{
+    ViewBag.Title = "Index";
+
+
+}
+
+<h2>DERSLER</h2> 
+<hr />
+<div class="alert alert-success" role="alert">@ViewBag.UrunSayisi adet ürün listelenmiştir.
+</div>
+<hr />
+
+<div class="row">
+    <div class=" col-md-3">
+        @foreach (var kategori in (List<Kategori>)ViewBag.Kategoriler)
+        {
+
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">@ViewBag.KategoriSayisi</span>
+                    @kategori.KategoriAdi
+                </li>
+            </ul>
+        }
+    </div>
+    <div class=" col-md-9">
+        @foreach (var urun in Model)
+        {
+
+
+            <div class="thumbnail">
+                <img src="http://via.placeholder.com/350x150" alt="...">
+                <div class="caption">
+                    <h3>@urun.UrunAdi</h3>
+
+
+                    <p>
+
+                        @if (urun.Aciklama.Length > 20)
+                    {
+                            @(urun.Aciklama.Substring(0, 12) + "...");
+                    }
+                    else
+                    {
+                            @urun.Aciklama
+                        }
+
+                    </p>
+
+
+                    <h4>@urun.Fiyat</h4>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+
+            </div>
+        }
+        </div>
+
+
+
+</div>
+
+
+}
+    
+
+
+
+
+
+
+
